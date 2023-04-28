@@ -10,12 +10,17 @@ import RewardDistributionOn from "./reward-distribution-on";
 import PoolsCard from './pools-card';
 import AssetsModal from "./assets-modal";
 
-function ListPools() {
-  const router = useRouter();
-
+function ListPools(props: { store: PoolsStore }) {
+  // read poolsStore from props
+  const { store: poolsStore } = props;
+  const { assetsOptions, allPools } = poolsStore;
+  // or read poolsStore from context
+  /*
   const poolsStore = useContext(PoolsStore.context);
   const { assetsOptions, allPools } = poolsStore;
+  */
 
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleCreatePool = useCallback((selectedAsstets: AssetsData[]) => {

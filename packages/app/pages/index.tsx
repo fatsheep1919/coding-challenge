@@ -34,10 +34,17 @@ export default observer(function () {
 
   }, [poolsStore]);
 
+  // poolsStore may be passed by props
+  return (
+    <Pools store={poolsStore} />
+  )
+  // poolsStore may be shared by underlying components by the way of useContext
+  /*
   return (
     <PoolsStoreContextProvider value={poolsStore}>
       <Pools />
     </PoolsStoreContextProvider>
   );
+  */
 });
 
